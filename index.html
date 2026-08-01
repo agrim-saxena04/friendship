@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Friendship Day, Lalli 🌸</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{
+    --pink: #ffb3c6;
+    --pink-deep: #ff8fab;
+    --lilac: #d9b8ff;
+    --peach: #ffd6a5;
+    --cream: #fff7fb;
+    --blue: #a2d2ff;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    font-family: 'Segoe UI', 'Comic Sans MS', 'Trebuchet MS', sans-serif;
+    overflow-x: hidden;
+    background: linear-gradient(-45deg, #ffdde1, #ffe9c9, #e0c3fc, #c1f0ff);
+    background-size: 400% 400%;
+    animation: gradientShift 18s ease infinite;
+    color: #6b4a5c;
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Floating sticker layer */
+  #stickers {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .sticker {
+    position: absolute;
+    top: -60px;
+    font-size: 28px;
+    opacity: 0.85;
+    animation-name: floatDown;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08));
+  }
+
+  @keyframes floatDown {
+    0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.9; }
+    50% { transform: translateY(50vh) translateX(30px) rotate(180deg); }
+    90% { opacity: 0.9; }
+    100% { transform: translateY(110vh) translateX(-30px) rotate(360deg); opacity: 0; }
+  }
+
+  /* twinkle stars */
+  .twinkle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1;
+    animation: twinkle 2.5s ease-in-out infinite;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+
+  .wrapper {
+    position: relative;
+    z-index: 5;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 50px 24px 90px;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 30px;
+    animation: popIn 1.2s ease;
+  }
+
+  @keyframes popIn {
+    0% { transform: scale(0.6) translateY(-30px); opacity: 0; }
+    60% { transform: scale(1.05) translateY(5px); opacity: 1; }
+    100% { transform: scale(1) translateY(0); opacity: 1; }
+  }
+
+  .title {
+    font-size: 2.6rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #ff6fa5, #c983ff, #ff9e6d, #ff6fa5);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shine 5s linear infinite;
+    margin: 0;
+    letter-spacing: 1px;
+    text-shadow: 0 4px 18px rgba(255,150,200,0.25);
+  }
+
+  @keyframes shine {
+    to { background-position: 300% center; }
+  }
+
+  .subtitle {
+    font-size: 1.15rem;
+    margin-top: 8px;
+    color: #b06a8f;
+    font-style: italic;
+  }
+
+  .name-badge {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 8px 26px;
+    background: rgba(255,255,255,0.65);
+    border: 2px dashed var(--pink-deep);
+    border-radius: 50px;
+    font-weight: 700;
+    color: #d1477f;
+    font-size: 1.3rem;
+    animation: wiggle 3s ease-in-out infinite;
+    backdrop-filter: blur(4px);
+  }
+
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg); }
+  }
+
+  .card {
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(10px);
+    border-radius: 26px;
+    padding: 34px 30px;
+    margin: 26px 0;
+    box-shadow: 0 8px 30px rgba(214,120,170,0.18);
+    border: 1px solid rgba(255,255,255,0.6);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card:hover {
+    transform: translateY(-8px) scale(1.015);
+    box-shadow: 0 16px 40px rgba(214,120,170,0.32);
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+  .card:hover::before { opacity: 1; }
+
+  .poem {
+    font-size: 1.08rem;
+    line-height: 1.95;
+    white-space: pre-line;
+    text-align: center;
+    color: #7a4a63;
+  }
+
+  .poem span.line {
+    display: block;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: lineIn 0.7s ease forwards;
+  }
+
+  @keyframes lineIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .signature {
+    text-align: center;
+    font-size: 1.4rem;
+    margin-top: 10px;
+    font-weight: 700;
+    color: #e0578e;
+  }
+
+  .wishes-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #a15fbf;
+    margin-bottom: 18px;
+  }
+
+  .wish-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+
+  .wish {
+    background: rgba(255,255,255,0.7);
+    border-radius: 18px;
+    padding: 18px;
+    text-align: center;
+    font-weight: 600;
+    color: #7a4a63;
+    box-shadow: 0 4px 14px rgba(200,140,180,0.15);
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+  }
+
+  .wish:hover {
+    transform: translateY(-6px) rotate(-1deg) scale(1.04);
+    background: linear-gradient(135deg, #ffe1ec, #ffe8cf);
+    box-shadow: 0 12px 26px rgba(255,150,190,0.4);
+  }
+
+  .wish .emoji {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 6px;
+    transition: transform 0.3s ease;
+  }
+
+  .wish:hover .emoji {
+    transform: scale(1.3) rotate(10deg);
+  }
+
+  .surprise-btn {
+    display: block;
+    margin: 40px auto 10px;
+    padding: 16px 42px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    background: linear-gradient(135deg, #ff8fab, #c983ff);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 22px rgba(255,120,170,0.4);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    letter-spacing: 0.5px;
+  }
+
+  .surprise-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 14px 30px rgba(255,120,170,0.55);
+  }
+
+  .surprise-btn:active {
+    transform: scale(0.96);
+  }
+
+  #popup-msg {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #d1477f;
+    min-height: 30px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  #popup-msg.show { opacity: 1; }
+
+  .footer-hearts {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 1.6rem;
+    letter-spacing: 6px;
+  }
+
+  .footer-hearts span {
+    display: inline-block;
+    animation: beat 1.4s ease-in-out infinite;
+  }
+  .footer-hearts span:nth-child(2) { animation-delay: 0.2s; }
+  .footer-hearts span:nth-child(3) { animation-delay: 0.4s; }
+  .footer-hearts span:nth-child(4) { animation-delay: 0.6s; }
+  .footer-hearts span:nth-child(5) { animation-delay: 0.8s; }
+
+  @keyframes beat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.35); }
+  }
+
+  /* confetti burst */
+  .confetti-piece {
+    position: fixed;
+    top: -10px;
+    z-index: 50;
+    pointer-events: none;
+    border-radius: 2px;
+    animation: fall linear forwards;
+  }
+  @keyframes fall {
+    to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+  }
+
+  @media (max-width: 480px) {
+    .title { font-size: 2rem; }
+    .card { padding: 24px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="stickers"></div>
+
+<div class="wrapper">
+  <div class="header">
+    <h1 class="title">Happy Friendship Day 🌸</h1>
+    <p class="subtitle">a little corner, made for my best friend</p>
+    <div class="name-badge">✨ Lalli ✨</div>
+  </div>
+
+  <div class="card">
+    <div class="poem" id="poemBox"></div>
+    <div class="signature">💙🦋 Stay happy, stay you 🦋💙</div>
+  </div>
+
+  <div class="card">
+    <div class="wish-grid">
+      <div class="wish"><span class="emoji">😊</span>A smile that never dims</div>
+      <div class="wish"><span class="emoji">💖</span>A heart that stays kind</div>
+      <div class="wish"><span class="emoji">🏆</span>Every dream turned to victory</div>
+      <div class="wish"><span class="emoji">🌈</span>Happiness at every step</div>
+      <div class="wish"><span class="emoji">🚪</span>Success at every door</div>
+      <div class="wish"><span class="emoji">🧿</span>Protection from every evil eye</div>
+      <div class="wish"><span class="emoji">🐰</span>Endless silly, happy days</div>
+      <div class="wish"><span class="emoji">🫂</span>A bond that never fades</div>
+    </div>
+  </div>
+
+  <button class="surprise-btn" onclick="surprise()">Click Me</button>
+  <div id="popup-msg"></div>
+
+  <div class="footer-hearts">
+    <span>💗</span><span>🧿</span><span>🌼</span><span>🤍</span><span>💙</span>
+  </div>
+</div>
+
+<script>
+  // ---- Poem lines, animated in one by one ----
+  const poemLines = [
+    "Some friendships are written in moments,",
+    "Ours is written in memories.",
+    "In every laugh we couldn't control,",
+    "In every silence that still felt complete.",
+    "",
+    "May your smile never lose its light,",
+    "May your heart always stay kind.",
+    "May every dream you quietly chase",
+    "Become a victory you proudly find.",
+    "",
+    "May happiness walk beside your path,",
+    "May success greet you at every door.",
+    "May life give you endless reasons to smile,",
+    "And bless you with everything you've wished for.",
+    "",
+    "Keep being the beautiful soul you are—",
+    "Kind, strong, genuine, and true.",
+    "The world feels a little brighter,",
+    "Simply because it has you.",
+    "",
+    "And I wish,",
+    "that this bond never fades away.",
+    "No matter how busy life becomes,",
+    "Promise me we'll always stay.",
+    "",
+    "Never leave this friendship behind,",
+    "Never let the distance win.",
+    "Because some people become family by choice,",
+    "And you're one of those for me.",
+    "",
+    "No matter where tomorrow takes us,",
+    "Or what the future has in store,",
+    "I'll always be thankful that life gave me you,",
+    "A best friend I could never ask more."
+  ];
+
+  const poemBox = document.getElementById('poemBox');
+  poemLines.forEach((line, i) => {
+    const el = document.createElement('span');
+    el.className = 'line';
+    el.style.animationDelay = (i * 0.12) + 's';
+    el.innerHTML = line === "" ? "&nbsp;" : line;
+    poemBox.appendChild(el);
+  });
+
+  // ---- Floating stickers background ----
+  const stickerEmojis = ['🌸','🫂','🐰','💖','🦋','🌼','🧿','✨','💫','🩷','🍬','🎀'];
+  const stickerLayer = document.getElementById('stickers');
+  const totalStickers = 26;
+
+  for (let i = 0; i < totalStickers; i++) {
+    const s = document.createElement('div');
+    s.className = 'sticker';
+    s.textContent = stickerEmojis[Math.floor(Math.random() * stickerEmojis.length)];
+    s.style.left = Math.random() * 100 + 'vw';
+    s.style.fontSize = (18 + Math.random() * 22) + 'px';
+    const duration = 10 + Math.random() * 14;
+    s.style.animationDuration = duration + 's';
+    s.style.animationDelay = (Math.random() * duration) + 's';
+    stickerLayer.appendChild(s);
+  }
+
+  // twinkle stars
+  for (let i = 0; i < 18; i++) {
+    const t = document.createElement('div');
+    t.className = 'twinkle';
+    t.textContent = '✦';
+    t.style.left = Math.random() * 100 + 'vw';
+    t.style.top = Math.random() * 100 + 'vh';
+    t.style.fontSize = (8 + Math.random() * 10) + 'px';
+    t.style.color = '#ffd6ea';
+    t.style.animationDelay = (Math.random() * 3) + 's';
+    stickerLayer.appendChild(t);
+  }
+
+  // ---- Surprise button: confetti + message ----
+  const surpriseMessages = [
+    "You're the best part of my memories, Lalli! 🌸",
+    "Distance means nothing when a friendship means everything 💙",
+    "Here's to more laughs, more memories, more us! 🫂",
+    "Forever Friends 🦋",
+    "Sending you all the hugs, today and always 🤍"
+  ];
+
+  function surprise() {
+    burstConfetti();
+    const msgEl = document.getElementById('popup-msg');
+    msgEl.textContent = surpriseMessages[Math.floor(Math.random() * surpriseMessages.length)];
+    msgEl.classList.remove('show');
+    void msgEl.offsetWidth; // reflow to restart animation
+    msgEl.classList.add('show');
+  }
+
+  function burstConfetti() {
+    const colors = ['#ff8fab', '#d9b8ff', '#ffd6a5', '#a2d2ff', '#ffb3c6'];
+    for (let i = 0; i < 60; i++) {
+      const piece = document.createElement('div');
+      piece.className = 'confetti-piece';
+      const size = 6 + Math.random() * 6;
+      piece.style.width = size + 'px';
+      piece.style.height = (size * 0.4) + 'px';
+      piece.style.left = Math.random() * 100 + 'vw';
+      piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+      piece.style.animationDuration = (2 + Math.random() * 2) + 's';
+      document.body.appendChild(piece);
+      setTimeout(() => piece.remove(), 4200);
+    }
+  }
+</script>
+
+</body>
+</html>
